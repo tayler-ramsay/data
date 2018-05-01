@@ -11,6 +11,7 @@ header {
             padding: 25px 0px;
             visibility: hidden;
             opacity: 0;
+            border-bottom: 1px solid #f1f0ef;
             transition: .4s ease-in-out;
 
             &.hide {

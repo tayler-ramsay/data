@@ -262,4 +262,18 @@ $(document).ready(function(){
         $(this).css({'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 100 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +'%'});
     });
 
+    // load more sections (homepage filtering)
+    size_li4 = $(".stories .story-module").size();
+    m=4;
+    $('.stories .story-module:lt('+m+')').addClass('show');
+    $('.bottom-page-btn .load-more').click(function (e) {
+        e.preventDefault();
+        m= (m+4 <= size_li4) ? m+4 : size_li4;
+        $('.stories .story-module:lt('+m+')').addClass('show').removeClass('hide');
+        if(m == size_li4){
+            $('.bottom-page-btn .load-more').hide();
+            $('.bottom-page-btn .message').show();
+        }
+    });
+
 });

@@ -73,6 +73,27 @@
         }
     }
 }
+.black-btn {
+    padding: 15px 65px;
+    color: $dark-gray;
+    border: 2px solid $dark-gray;
+    border-radius: 30px;
+    background-color: transparent;
+    text-align: center;
+    font-family: $myriad;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px auto 5px;
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: .3s ease-in-out;
+
+    &:hover {
+        background-color: $dark-gray;
+        color: $white;
+    }
+}
 .back {
     color: $blue;
     display: inline-block;

@@ -1,12 +1,12 @@
 /* HERO */
 .hero {
     width: 100%;
+    max-width: 1717px;
     height: 650px;
     background-image: url('../img/homepage-hero.png');
     background-repeat: no-repeat;
-    background-size: cover;
     background-position: top center;
-    margin-top: 270px;
+    margin: 270px auto 0px;
     padding: 80px 200px 140px;
     position: relative;
 
@@ -39,6 +39,25 @@
         bottom: 70px;
         left: 50%;
         transform: translate(-50%, -50%);
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+
+        &:hover {
+            -webkit-animation-name: hang-sink-down, hang-down;
+            animation-name: hang-sink-down, hang-down;
+            -webkit-animation-duration: .3s, 1.5s;
+            animation-duration: .3s, 1.5s;
+            -webkit-animation-delay: 0s, .3s;
+            animation-delay: 0s, .3s;
+            -webkit-animation-timing-function: ease-out, ease-in-out;
+            animation-timing-function: ease-out, ease-in-out;
+            -webkit-animation-iteration-count: 1, infinite;
+            animation-iteration-count: 1, infinite;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation-direction: normal, alternate;
+            animation-direction: normal, alternate;
+        }
     }
 }
 

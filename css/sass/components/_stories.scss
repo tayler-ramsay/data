@@ -8,18 +8,33 @@
         width: 49%;
         margin-right: 2%;
         margin-bottom: 2%;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        transition: .3s ease-in-out;
 
         &:nth-child(even) {
             margin-right: 0%;
+        }
+        &.hide {
+            display: none;
+            animation: fade-out 1s ease-in-out;
+            -webkit-animation: fade-out 1s ease-in-out;
+        }
+        &.show {
+            display: flex !important;
+            animation: fade-in 1s ease-in-out !important;
+            -webkit-animation: fade-in 1s ease-in-out !important;
         }
     }
     .story {
         background-color: $white;
         transition: .2s ease-in-out;
+        box-shadow: 0px 0px 50px rgba(50, 50, 50, .2);
 
         &.full {
             .story-content {
-                padding: 40px 100px 40px;
+                padding: 40px 12% 40px;
             }
         }
         &.half {
@@ -30,6 +45,8 @@
                 margin-right: 4%;
             }
             .story-content {
+                padding: 10px 17% 40px;
+
                 .heading {
                     font-size: 24px;
                 }
@@ -97,7 +114,7 @@
             }
         }
         .story-content {
-            padding: 10px 70px 40px;
+            padding: 10px 12% 40px;
 
             .county {
                 color: $gold;

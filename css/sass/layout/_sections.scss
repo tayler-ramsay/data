@@ -153,6 +153,16 @@
         }
     }
 }
+.bottom-page-btn {
+    text-align: center;
+
+    .message {
+        color: #9d9c9c;
+        font-weight: 600;
+        font-size: 20px;
+        display: none;
+    }
+}
 .sidebar {
     .share {
         font-weight: bold;
