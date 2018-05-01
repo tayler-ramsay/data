@@ -1,0 +1,43 @@
+form {
+    &.search {
+        width: 50%;
+        max-width: 600px;
+        position: absolute;
+        right: calc(5% - 15px);
+        direction: rtl;
+        visibility: hidden;
+
+        input {
+            width: 0%;
+            padding: 10px 0px;
+            border: 1px solid transparent;
+            border-radius: 25px;
+            margin-top: 10px;
+            transition: .45s ease-in-out;
+            outline: none;
+            direction: ltr;
+            font-family: $myriad;
+
+            &::placeholder {
+                font-style: italic;
+                opacity: 0;
+                transition: .4s ease-in-out;
+            }
+        }
+        label {
+            display: none;
+        }
+        &.open {
+            visibility: visible;
+            input {
+                width: 100%;
+                padding: 10px 45px 10px 20px;
+                border: 1px solid gray;
+
+                &::placeholder {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

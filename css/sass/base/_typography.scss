@@ -1,0 +1,44 @@
+/* TYPOGRAPHY */
+
+@import url("https://use.typekit.net/cyd3psy.css");
+
+body {
+    font-family: $myriad;
+    font-size: $body-font-size;
+}
+h1 {
+    font-size: 60px;
+    color: $gold;
+    margin: 0px;
+}
+h2 {
+    color: $turquoise;
+    margin-top: 0px;
+    font-size: 36px;
+    line-height: 44px;
+}
+h3 {
+    font-size: 24px;
+    line-height: 30px;
+    color: $dark-gray;
+    margin-top: 0px;
+}
+p, ul li, ol li {
+    color: $dark-gray;
+    line-height: 26px;
+}
+sup {
+    /*font-size: 30px;
+    top: -20px;*/
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 42px;
+    }
+    h2 {
+        font-size: 30px;
+        line-height: 34px;
+    }
+}

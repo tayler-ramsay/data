@@ -1,0 +1,116 @@
+/*
+ * Heading Size Mixin
+ * Thank you to https://codepen.io/zgreen/post/contextual-heading-sizes-with-sass
+ */
+ @mixin heading-size($size) {
+     font-size: $size * 0.35 + em;
+ }
+
+/*
+ * Vendor Prefix Mixins
+ * The goal is to eventually phase these out and use Autoprefixer
+ */
+@mixin border-radius($r: 0) {
+  -webkit-border-radius: $r;
+  -moz-border-radius: $r;
+  border-radius: $r;
+}
+
+@mixin box-sizing($arg: border-box) {
+  -webkit-box-sizing: $arg;
+  -moz-box-sizing: $arg;
+  box-sizing: $arg;
+}
+
+
+/*
+ * CSS3 Transforms / Animations
+ */
+@mixin transform-3d($translate-x: 0, $translate-y: 0, $translate-z: 0, $rotate-x: 0, $rotate-y: 0, $rotate-z: 0, $scale-x: 1, $scale-y: 1, $scale-z: 1, $perspective: none) {
+    -webkit-transform: translate3d($translate-x, $translate-y, $translate-z) rotateX($rotate-x) rotateY($rotate-y) rotateZ($rotate-z) scaleX($scale-x) scaleY($scale-y) scaleZ($scale-z) perspective($perspective);
+    -ms-transform: translate3d($translate-x, $translate-y, $translate-z) rotateX($rotate-x) rotateY($rotate-y) rotateZ($rotate-z) scaleX($scale-x) scaleY($scale-y) scaleZ($scale-z);
+    transform: translate3d($translate-x, $translate-y, $translate-z) rotateX($rotate-x) rotateY($rotate-y) rotateZ($rotate-z) scaleX($scale-x) scaleY($scale-y) scaleZ($scale-z) perspective($perspective);
+}
+
+@mixin transition-delay($delay) {
+	-webkit-transition-delay: $delay;
+	-moz-transition-delay: $delay;
+	-o-transition-delay: $delay;
+	-ms-transition-delay: $delay;
+	transition-delay: $delay;
+}
+
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+
+// generic transform
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+
+// rotate
+@mixin rotate($deg) {
+    @include transform(rotate(#{$deg}deg));
+}
+
+// scale
+@mixin scale($scale) {
+    @include transform(scale($scale));
+}
+
+// translate
+@mixin translate($x, $y) {
+    @include transform(translate($x, $y));
+}
+
+// skew
+@mixin skew($x, $y) {
+    @include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+//transform origin
+@mixin transform-origin($origin) {
+    moz-transform-origin: $origin;
+    -o-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    -webkit-transform-origin: $origin;
+    transform-origin: $origin;
+}
+
+// vertical centering
+@mixin centerer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+// 1-1 ratio
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: ($height / $width) * 100%;
+    }
+    > .content {
+        position: absolute;
+        top: 35px;
+        bottom: 0;
+    }
+}

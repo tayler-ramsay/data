@@ -1,0 +1,70 @@
+/* GLOBAL STYLES */
+
+* {
+    @include box-sizing(border-box);
+}
+
+html, body {
+    height: 100%;
+}
+body {
+    background-color: $light-gray;
+
+    &.home {
+        background-image: url('../img/curves.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        .main-content {
+            max-width: none;
+            margin-top: 126px;
+        }
+    }
+}
+.container {
+    width: 90%;
+    max-width: 1500px;
+    margin: 0px auto;
+
+    &.main-content {
+        margin-top: 70px;
+    }
+}
+.main-content {
+    max-width: 1200px;
+
+    .content {
+        width: 65%;
+        margin-right: 10%;
+        float: left;
+    }
+    .sidebar {
+        width: 25%;
+        float: left;
+    }
+}
+a {
+    color: $body-link-color;
+    transition: .1s linear;
+
+    &:hover {
+        color: $dark-gray;
+    }
+}
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+::selection {
+    background: $blue;
+    color: $white;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 700px) {
+    .container {
+        &.main-content {
+            margin-top: 40px;
+        }
+    }
+}

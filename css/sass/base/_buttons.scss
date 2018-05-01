@@ -1,0 +1,133 @@
+/* BUTTONS */
+
+.btn {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+    overflow: hidden;
+    background: #e1e1e1;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    padding: 1em;
+    width: 100%;
+    text-align: center;
+    border-radius: 50px;
+    margin-top: 20px;
+    cursor: pointer;
+    background: $turquoise;
+    text-decoration: none;
+    color: $white;
+    font-weight: 600;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    &:hover, &:focus, &:active {
+        color: white;
+
+        &:before {
+            -webkit-transform: scale(2);
+            transform: scale(2);
+        }
+    }
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: lighten($turquoise, 3%);
+        border-radius: 100%;
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+    }
+
+    &.gold {
+        background: $gold;
+        width: auto;
+        float: right;
+        margin-top: 5px;
+        padding: 10px 30px 15px;
+        font-weight: bold;
+
+        &:before {
+            background: lighten($gold, 3%);
+        }
+        img {
+            position: relative;
+            top: 5px;
+            margin-right: 15px;
+        }
+    }
+}
+.back {
+    color: $blue;
+    display: inline-block;
+    margin-top: 20px;
+    margin-right: 60px;
+    font-size: 17px;
+    position: relative;
+    right: 0px;
+
+    &:before {
+        content: url('../img/gold-arrow.png');
+        margin-right: 10px;
+        position: relative;
+        top: 0px;
+        right: 0px;
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px transparent;
+    }
+    &:hover {
+        color: $gold;
+        right: 3px;
+
+        &:before {
+            -webkit-animation-name: hang-sink-left, hang-left;
+            animation-name: hang-sink-left, hang-left;
+            -webkit-animation-duration: .3s, 1.5s;
+            animation-duration: .3s, 1.5s;
+            -webkit-animation-delay: 0s, .3s;
+            animation-delay: 0s, .3s;
+            -webkit-animation-timing-function: ease-out, ease-in-out;
+            animation-timing-function: ease-out, ease-in-out;
+            -webkit-animation-iteration-count: 1, infinite;
+            animation-iteration-count: 1, infinite;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation-direction: normal, alternate;
+            animation-direction: normal, alternate;
+        }
+    }
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 430px) {
+    .back {
+        font-size: 15px;
+        line-height: 20px;
+
+        &:before {
+            display: none;
+        }
+        &:hover {
+            right: 0px;
+        }
+    }
+}

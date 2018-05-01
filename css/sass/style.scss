@@ -1,0 +1,73 @@
+/*
+ *	Sass Start - Base for getting started with Sass
+ *	--------------------------------------------------
+ *	CSS generated with Sass. Only edit the Sass files.
+ * --------------------------------------------------
+ * Need help organizing with Sass? Try https://sass-guidelin.es/
+ or the official docs http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html
+ */
+@charset 'utf-8';
+
+
+/*
+ * SASS EXTENSIONS
+ * --------------------------------------------------
+ */
+
+    // Susy Grid System - http://susydocs.oddbird.net/en/latest/
+    @import 'susy';
+
+    // Breakpoint Media Queries - http://breakpoint-sass.com/
+    @import 'breakpoint';
+
+
+
+ /*
+  * NORMALIZE.CSS
+  * We use Normalize to fix discrepancies across browsers/devices. Include this before our styles
+ --------------------------------------------------
+  */
+    @import 'vendor/normalize';
+
+
+ /*
+  * UTILITIES
+  * These are variables/mixins/etc. used throughout the styles; they need to be includued first so that they can be used.
+ --------------------------------------------------
+  */
+    @import 'utilities/mixins';
+    @import 'utilities/variables';
+    @import 'utilities/helpers';
+
+
+/*
+ * BASE
+ * These are the global base styles used across the site. Think text, forms, buttons, blockquotes, lists, etc. etc.
+--------------------------------------------------
+ */
+    @import 'base/global';
+    @import 'base/typography';
+    @import 'base/buttons';
+    @import 'base/animations';
+    @import 'base/forms';
+
+
+/*
+ * COMPONENTS
+ * Break all your specific elements into components (or "widgets" or "modules" or whatever your preferred term). Think navigation menus, heros, photo galleries, callouts, sliders, article lists, etc. etc.
+--------------------------------------------------
+ */
+    @import 'components/stories';
+    @import 'components/filtering';
+
+
+/*
+ * LAYOUT
+ * Layout is for page/template specific styling.
+ * Example: the Homepage needs specially styled differently than normal pages
+--------------------------------------------------
+ */
+    @import 'layout/header';
+    @import 'layout/hero';
+    @import 'layout/footer';
+    @import 'layout/sections';

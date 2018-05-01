@@ -1,0 +1,321 @@
+/* SECTIONS */
+.what-neighbors-do {
+    width: 73.9%;
+    margin-right: 2%;
+    float: left;
+    background-image: url('../img/what-neighbors-do.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 80px 80px 60px;
+    margin-top: 30px;
+
+    p {
+        color: $white;
+        width: 100%;
+        max-width: 550px;
+        margin-top: 40px;
+        line-height: 27px;
+        font-size: 19px;
+
+        a {
+            color: $white;
+            font-weight: 600;
+            text-decoration: none;
+
+            &:before {
+                content: url('../img/white-arrow.png');
+                margin-right: 15px;
+                position: relative;
+                top: 0px;
+                display: inline-block;
+                vertical-align: middle;
+                -webkit-transform: perspective(1px) translateZ(0);
+                transform: perspective(1px) translateZ(0);
+                box-shadow: 0 0 1px transparent;
+            }
+            &:hover {
+                color: $turquoise;
+
+                &:before {
+                    -webkit-animation-name: hang-sink-down, hang-down;
+                    animation-name: hang-sink-down, hang-down;
+                    -webkit-animation-duration: .3s, 1.5s;
+                    animation-duration: .3s, 1.5s;
+                    -webkit-animation-delay: 0s, .3s;
+                    animation-delay: 0s, .3s;
+                    -webkit-animation-timing-function: ease-out, ease-in-out;
+                    animation-timing-function: ease-out, ease-in-out;
+                    -webkit-animation-iteration-count: 1, infinite;
+                    animation-iteration-count: 1, infinite;
+                    -webkit-animation-fill-mode: forwards;
+                    animation-fill-mode: forwards;
+                    -webkit-animation-direction: normal, alternate;
+                    animation-direction: normal, alternate;
+                }
+            }
+        }
+    }
+}
+.community-report {
+    margin-top: 30px;
+    background-color: $white;
+    width: 24%;
+    float: left;
+
+    .col-img {
+        position: relative;
+
+        img {
+            width: 100%;
+        }
+        .pdf-tag {
+            width: 100%;
+            max-width: 100px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+        }
+    }
+    .col-content {
+        padding: 50px;
+        margin-top: -4px;
+    }
+}
+.community-report {
+    margin-right: 0%;
+}
+.community-health {
+    width: 100%;
+    margin-top: 30px;
+    background-color: $white;
+    position: relative;
+    padding: 40px;
+
+    .col-img {
+        width: calc(33% - 40px);
+        float: left;
+        margin-right: 40px;
+
+        img {
+            width: 100%;
+        }
+    }
+    a {
+        color: $turquoise;
+        text-decoration: none;
+        font-weight: 600;
+        position: relative;
+        left: 0px;
+
+        &:after {
+            content: url('../img/turquoise-arrow.png');
+            margin-right: 10px;
+            position: relative;
+            top: 0px;
+            left: 10px;
+            display: inline-block;
+            vertical-align: middle;
+            -webkit-transform: perspective(1px) translateZ(0);
+            transform: perspective(1px) translateZ(0);
+            box-shadow: 0 0 1px transparent;
+        }
+        &:hover {
+            left: 3px;
+
+            &:after {
+                -webkit-animation-name: hang-sink-right, hang-right;
+                animation-name: hang-sink-right, hang-right;
+                -webkit-animation-duration: .3s, 1.5s;
+                animation-duration: .3s, 1.5s;
+                -webkit-animation-delay: 0s, .3s;
+                animation-delay: 0s, .3s;
+                -webkit-animation-timing-function: ease-out, ease-in-out;
+                animation-timing-function: ease-out, ease-in-out;
+                -webkit-animation-iteration-count: 1, infinite;
+                animation-iteration-count: 1, infinite;
+                -webkit-animation-fill-mode: forwards;
+                animation-fill-mode: forwards;
+                -webkit-animation-direction: normal, alternate;
+                animation-direction: normal, alternate;
+            }
+        }
+    }
+}
+.main-content {
+    .content {
+        .smaller-text {
+            font-size: 16px;
+            margin-top: 0px;
+
+            .semibold {
+                font-weight: 600;
+            }
+        }
+    }
+}
+.sidebar {
+    .share {
+        font-weight: bold;
+        font-size: 20px;
+        margin-top: 42px;
+    }
+    .heading {
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 0px;
+        line-height: 22px;
+    }
+    .social {
+        margin-left: -50px;
+
+        li {
+            list-style-type: none;
+            display: inline-block;
+            margin-right: 10px;
+
+            &:last-of-type {
+                margin-right: 0px;
+            }
+            a {
+                color: $gold;
+                font-size: 30px;
+                padding: 10px;
+                position: relative;
+                top: 0px;
+                transition: .2s ease-in-out;
+
+                &:hover {
+                    color: $blue;
+                    top: -5px;
+                }
+            }
+        }
+    }
+}
+.story-image {
+    margin-top: 50px;
+
+    img {
+        width: 100%;
+    }
+}
+.needs-assessments {
+    h2 {
+        color: $dark-gray;
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 28px;
+    }
+    .sidebar {
+        ul {
+            li {
+                line-height: 34px;
+            }
+        }
+        .subheading {
+            font-weight: 600;
+            margin-top: 40px;
+            line-height: 22px;
+        }
+    }
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1200px) {
+    .what-neighbors-do {
+        width: 100%;
+        margin-right: 0%;
+    }
+    .community-report, .community-health {
+        width: 100%;
+        padding: 40px;
+
+        .col-img {
+            width: calc(50% - 40px);
+            float: left;
+            margin-right: 40px;
+
+            img {
+                width: 100%;
+            }
+        }
+        .col-content {
+            padding: 0px;
+            float: left;
+            width: 50%;
+        }
+    }
+}
+@media screen and (max-width: 700px) {
+    .what-neighbors-do {
+        background-position: 10%;
+        padding: 50px;
+    }
+    .main-content {
+        .content {
+            width: 100%;
+            margin-right: 0%;
+        }
+    }
+    .sidebar {
+        width: 90%;
+        margin: 0px auto;
+
+        .share {
+            margin-top: 30px;
+        }
+    }
+    .story-image {
+        margin-top: 30px;
+    }
+    .needs-assessments {
+        .sidebar {
+            width: 100%;
+
+            .heading {
+                margin-top: 20px;
+            }
+        }
+    }
+    .community-report, .community-health {
+        padding: 0px;
+
+        .col-img {
+            width: 100%;
+            float: none;
+            margin-right: 0px;
+        }
+        .col-content {
+            padding: 40px;
+            float: none;
+            width: 100%;
+        }
+    }
+}
+@media screen and (max-width: 650px) {
+    .community-report, .community-health {
+        width: 100%;
+        margin-right: 0%;
+    }
+}
+@media screen and (max-width: 450px) {
+    .what-neighbors-do {
+        padding: 30px;
+    }
+    .community-report, .community-health {
+        .col-content {
+            padding: 30px;
+        }
+    }
+}
+@media screen and (max-width: 450px) {
+    .what-neighbors-do {
+        p {
+            a {
+                &:before {
+                    display: none;
+                }
+            }
+        }
+    }
+}

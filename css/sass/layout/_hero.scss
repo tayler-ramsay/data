@@ -1,0 +1,73 @@
+/* HERO */
+.hero {
+    width: 100%;
+    height: 650px;
+    background-image: url('../img/homepage-hero.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    margin-top: 270px;
+    padding: 80px 200px 140px;
+    position: relative;
+
+    .intro {
+        max-width: 550px;
+        position: absolute;
+        bottom: 200px;
+
+        h1 {
+            color: $white;
+            font-size: 48px;
+            font-weight: bold;
+            max-width: 700px;
+            width: 100%;
+            margin-top: 70px;
+            line-height: 60px;
+
+            sup {
+                font-size: 12px;
+                position: relative;
+                top: -25px;
+            }
+        }
+        p {
+            color: $white;
+        }
+    }
+    a {
+        position: absolute;
+        bottom: 70px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 700px) {
+    .hero {
+        padding: 80px 0px 140px;
+
+        .subheading {
+            margin-top: 80px;
+        }
+        h1 {
+            font-size: 40px;
+            line-height: 50px;
+            margin-top: 40px;
+        }
+    }
+}
+@media screen and (max-width: 500px) {
+    .hero {
+        padding: 40px 0px 90px;
+
+        .subheading {
+            margin-top: 50px;
+        }
+        h1 {
+            font-size: 30px;
+            line-height: 36px;
+            margin-top: 30px;
+        }
+    }
+}
