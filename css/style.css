@@ -881,7 +881,7 @@ form.search input {
   padding: 10px 0px;
   border: 1px solid transparent;
   border-radius: 25px;
-  margin-top: 10px;
+  margin-top: 8px;
   transition: .45s ease-in-out;
   outline: none;
   direction: ltr;
@@ -907,6 +907,17 @@ form.search.open input::placeholder {
   opacity: 1;
 }
 
+/* MEDIA QUERIES */
+@media screen and (max-width: 1000px) {
+  form.search {
+    top: 7px;
+  }
+}
+@media screen and (max-width: 800px) {
+  form.search input {
+    margin-right: 55px;
+  }
+}
 /*
  * COMPONENTS
  * Break all your specific elements into components (or "widgets" or "modules" or whatever your preferred term). Think navigation menus, heros, photo galleries, callouts, sliders, article lists, etc. etc.
@@ -1128,6 +1139,9 @@ header .filter-bar .filter-expanded.hide {
   visibility: hidden;
   opacity: 0;
   top: 112px;
+}
+header .filter-bar .filter-expanded.hide .col label.show {
+  visibility: hidden;
 }
 header .filter-bar .filter-expanded.show {
   visibility: visible;
@@ -1358,9 +1372,13 @@ header .header-right nav ul li {
   display: inline-block;
   margin-left: 70px;
   position: relative;
+  top: -5px;
 }
 header .header-right nav ul li:first-of-type {
   margin-left: 0px;
+}
+header .header-right nav ul li:last-of-type {
+  top: -2px;
 }
 header .header-right nav ul li:last-of-type a {
   z-index: 1;
@@ -1389,6 +1407,7 @@ header .header-right nav ul li a {
   text-decoration: none;
   transition: .4s ease-in-out;
   position: relative;
+  text-align: left;
 }
 header .header-right nav ul li a:before {
   content: "";
@@ -1530,50 +1549,145 @@ header .filter-bar ul li input[type="radio"][checked] + label:before {
   top: -130px;
 }
 
+.hamburger {
+  display: none;
+}
+.hamburger ul {
+  float: right;
+}
+.hamburger ul li {
+  list-style-type: none;
+  display: inline-block;
+  margin-left: 30px;
+}
+.hamburger ul li img:last-of-type {
+  width: 23px;
+}
+
+.mobile-menu {
+  background-color: #00aba3;
+  position: absolute;
+  top: 0px;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  display: none;
+  transition: .7s ease-in-out;
+}
+.mobile-menu.show {
+  right: 0%;
+}
+.mobile-menu .close {
+  width: 25px;
+  position: absolute;
+  top: 30px;
+  right: 5%;
+}
+.mobile-menu nav {
+  margin-top: 150px;
+}
+.mobile-menu nav ul {
+  margin-left: -40px;
+}
+.mobile-menu nav ul li {
+  list-style-type: none;
+  display: block;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.mobile-menu nav ul li a {
+  color: #ffffff;
+  font-size: 60px;
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 66px;
+}
+.mobile-menu nav ul li ul {
+  display: none;
+}
+
 /* MEDIA QUERIES */
-@media screen and (max-width: 940px) {
-  header .header-right .back {
-    margin-right: 20px;
+@media screen and (max-width: 1400px) {
+  header .filter-bar ul {
+    margin-left: -25px;
+  }
+  header .filter-bar ul li {
+    margin-right: 10px;
+  }
+  header .filter-bar .btn.gold {
+    margin-top: 7px;
+    padding: 8px 20px 15px;
+    font-size: 16px;
+  }
+  header .filter-bar .btn.gold img {
+    margin-right: 10px;
   }
 }
-@media screen and (max-width: 890px) {
-  header .header-right {
-    margin-top: -38px;
-    position: relative;
-    top: 20px;
+@media screen and (max-width: 1300px) {
+  header .header-left .tagline {
+    margin: 0px 0px 0px 20px;
+    font-size: 26px;
   }
-  header .header-right .back {
+  header .header-right {
+    width: 50%;
+    text-align: right;
+  }
+  header .header-right nav ul li {
+    margin-left: 30px;
+  }
+}
+@media screen and (max-width: 1180px) {
+  header .filter-bar .btn.gold img {
     margin-right: 0px;
-    float: none;
-  }
-  header .header-right .social {
-    float: none;
-    text-align: right;
   }
 }
-@media screen and (max-width: 660px) {
-  header .header-right {
-    top: 29px;
-    margin-top: -58px;
+@media screen and (max-width: 1000px) {
+  header .top-header {
+    padding: 10px 0px 0px;
   }
-  header .header-right .back {
-    text-align: right;
+  header .header-left .logo {
+    width: 100px;
   }
-  header .header-right .back .mobile-break {
-    display: block;
-  }
-}
-@media screen and (max-width: 430px) {
-  header {
-    padding: 31px 0px 30px;
-  }
-  header .logo {
-    width: 90px;
-    top: 8px;
-    position: relative;
-  }
-  header .logo img {
+  header .header-left .logo img {
     width: 100%;
+  }
+  header .header-left .tagline {
+    display: none;
+  }
+  header .header-right {
+    width: auto;
+  }
+  header .header-right nav ul li {
+    top: -8px;
+  }
+  header .header-right nav ul li:last-of-type {
+    top: -5px;
+  }
+}
+@media screen and (max-width: 900px) {
+  header .filter-bar ul {
+    margin-left: -28px;
+  }
+  header .filter-bar ul li {
+    margin-right: 3px;
+  }
+  header .filter-bar ul li a, header .filter-bar ul li label {
+    font-size: 16px;
+  }
+  header .filter-bar p {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .hamburger {
+    display: block;
+    position: relative;
+    top: -3px;
+  }
+
+  .mobile-menu {
+    display: block;
   }
 }
 /* HERO */

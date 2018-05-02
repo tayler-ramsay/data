@@ -18,6 +18,14 @@ header {
                 visibility: hidden;
                 opacity: 0;
                 top: 112px;
+
+                .col {
+                    label {
+                        &.show {
+                            visibility: hidden;
+                        }
+                    }
+                }
             }
             &.show {
                 visibility: visible;
