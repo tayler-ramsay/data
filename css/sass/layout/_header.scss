@@ -203,6 +203,18 @@ header {
 
                 &:last-of-type {
                     margin-right: 0px;
+
+                    &:before {
+                        content: '';
+                        width: 62px;
+                        height: 62px;
+                        background-image: url('../img/fade.png');
+                        background-repeat: no-repeat;
+                        display: none;
+                        position: absolute;
+                        top: -18px;
+                        left: -40px;
+                    }
                 }
                 &:hover {
                     a, label {
@@ -301,7 +313,7 @@ header {
         right: 5%;
     }
     nav {
-        margin-top: 150px;
+        margin-top: 120px;
 
         ul {
             margin-left: -40px;
@@ -310,19 +322,28 @@ header {
                 list-style-type: none;
                 display: block;
                 text-align: center;
-                margin-bottom: 40px;
+                margin-bottom: 30px;
 
                 a {
                     color: $white;
-                    font-size: 60px;
+                    font-size: 40px;
                     font-weight: bold;
                     text-decoration: none;
-                    line-height: 66px;
+                    line-height: 50px;
                 }
                 ul {
                     display: none;
                 }
             }
+        }
+    }
+    .btn {
+        &.gold {
+            max-width: 357px;
+            width: 100%;
+            margin: 80px auto 0px;
+            float: none;
+            display: block;
         }
     }
 }
@@ -449,5 +470,70 @@ header {
     }
     .mobile-menu {
         display: block;
+    }
+    header {
+        .filter-bar {
+            padding: 0px;
+        }
+    }
+}
+@media screen and (max-width: 720px) {
+    header {
+        .filter-bar {
+            p {
+                display: none;
+            }
+            form {
+                margin-left: 0%;
+                padding-left: 0%;
+                overflow-x: auto;
+                width: 100%;
+                padding-bottom: 2px;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+                ul {
+                    display: flex;
+                    margin-bottom: 12px;
+
+                    li {
+                        &:nth-last-child(2) {
+                            padding-right: 45px
+                        }
+                        &:last-of-type {
+                            position: absolute;
+                            right: 0px;
+                            top: 18px;
+                            padding-right: 5%;
+                            background-color: $turquoise;
+
+                            &:hover {
+                                a {
+                                    &:before {
+                                        visibility: hidden;
+                                        opacity: 0;
+                                    }
+                                }
+                            }
+                            a {
+                                padding: 0px;
+
+                                img {
+                                    width: 30px;
+                                    margin: 0px;
+                                    position: relative;
+                                    right: -8px;
+                                    top: 4px;
+                                }
+                            }
+                            &:before {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

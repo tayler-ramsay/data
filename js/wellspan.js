@@ -32,7 +32,7 @@ $(document).ready(function(){
     });
 
     // hide the mobile header (KENDRA NOTE: REVIEW IF NEEDED)
-    function hideMobileHeader(width){
+    /*function hideMobileHeader(width){
         if ( width <= 753) {
             // Hide Header on on scroll down
             var didScroll;
@@ -80,7 +80,7 @@ $(document).ready(function(){
     hideMobileHeader( $(window).width() );
         $(window).on('resize', function(){
             hideMobileHeader( $(this).width() );
-    });
+    });*/
 
     // toggle the search bar
     $('.header-right nav ul li:last-of-type a').on('click', function(e) {
@@ -119,7 +119,7 @@ $(document).ready(function(){
         if (width <= 785) {
             $('.filter-bar .container .gold').appendTo('.mobile-menu .container');
         } else {
-            $('.mobile-menu .container .gold').insertAfter('.filter-bar form');
+            $('.mobile-menu .container .gold').insertAfter('.filter-bar .container form');
         }
     }
     moveCbrBtn($(window).width());
@@ -204,9 +204,55 @@ $(document).ready(function(){
         }
     });
 
+    // change 'Filter' to a filter icon on mobile
+    function changeFilterIcon(width) {
+        if (width <= 705) {
+            if ($('.filter-expanded .col input[type="checkbox"]').is(':checked')) {
+                $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter-check.svg" alt="Filter check icon" />');
+            } else {
+                $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter.svg" alt="Filter icon" />');
+            }
+        } else {
+            $('.filter-bar form ul li:last-of-type a').html('Filter <img src="img/white-arrow-down.png" alt="White arrow" />');
+        }
+    }
+    changeFilterIcon($(window).width());
+    $(window).on('resize', function() {
+        changeFilterIcon($(this).width());
+    });
+
+    // change 'Filter' to a filter icon on mobile
+    function changeFilterIcon2(width) {
+        if (width >= 705) {
+            if ($('.filter-expanded .col input[type="checkbox"]').is(':checked')) {
+                $('.filter-bar form ul li:last-of-type a').html('Filter <img src="img/white-arrow-down.png" alt="White arrow" />');
+            } else {
+                $('.filter-bar form ul li:last-of-type a').html('Filter <img src="img/white-arrow-down.png" alt="White arrow" />');
+            }
+        }
+    }
+    changeFilterIcon2($(window).width());
+    $(window).on('click', function() {
+        changeFilterIcon2($(this).width());
+    });
+
     // when the reset button is clicked, remove the checked attribute from filters
     $('.filter-expanded input[type="reset"]').on('click', function(e) {
         $('.filter-expanded input[type="checkbox"]').removeAttr('checked', 'checked');
+    });
+
+    function clearFilterIcon(width) {
+        if (width <= 705) {
+            $('.filter-expanded input[type="reset"]').on('click', function(e) {
+                $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter.svg" alt="Filter icon" />');
+            });
+        } else {
+            $('.filter-bar form ul li:last-of-type a').html('Filter <img src="img/white-arrow-down.png" alt="White arrow" />');
+        }
+    }
+    clearFilterIcon($(window).width());
+    $(window).on('resize', function() {
+        clearFilterIcon($(this).width());
     });
 
     // show more/less filters (1st column)
@@ -236,29 +282,71 @@ $(document).ready(function(){
     });
 
     // show more/less filters (2nd column)
-    size_li2 = $(".filter-expanded .col:nth-of-type(2) label").size();
-    y=15;
-    $('.filter-expanded .col:nth-of-type(2) label:lt('+y+')').addClass('show');
-    $('.filter-expanded .col:nth-of-type(2) .more-less').click(function (e) {
+    function keyTopicsFilter(width) {
+        if (width <= 705) {
+            size_li2 = $(".filter-expanded .col:nth-of-type(2) label").size();
+            y=5;
+            $('.filter-expanded .col:nth-of-type(2) label:lt('+y+')').addClass('show');
+            $('.filter-expanded .col:nth-of-type(2) .more-less').click(function (e) {
 
-        if ($('.filter-expanded .col:nth-of-type(2) .more-less').hasClass('arrow-down')) {
-            e.preventDefault();
-            y= (y+15 <= size_li2) ? y+15 : size_li2;
-            $('.filter-expanded .col:nth-of-type(2) label:lt('+y+')').addClass('show').removeClass('hide');
-            if(y == size_li2){
-                $('.filter-expanded .col:nth-of-type(2) .more-less').text('Show Less');
-                $('.filter-expanded .col:nth-of-type(2) .more-less').addClass('arrow-up').removeClass('arrow-down');
-            }
+                if ($('.filter-expanded .col:nth-of-type(2) .more-less').hasClass('arrow-down')) {
+                    e.preventDefault();
+                    y= (y+5 <= size_li2) ? y+5 : size_li2;
+                    $('.filter-expanded .col:nth-of-type(2) label:lt('+y+')').addClass('show').removeClass('hide');
+                    if(y == size_li2){
+                        $('.filter-expanded .col:nth-of-type(2) .more-less').text('Show Less');
+                        $('.filter-expanded .col:nth-of-type(2) .more-less').addClass('arrow-up').removeClass('arrow-down');
+                    }
+                } else {
+                    e.preventDefault();
+                    y=(y-500<0) ? 5 : y-500;
+                    $('.filter-expanded .col:nth-of-type(2) label').not(':lt('+y+')').addClass('hide').removeClass('show');
+                    if(y <= 5){
+                        $('.filter-expanded .col:nth-of-type(2) .more-less').text('Show More');
+                        $('.filter-expanded .col:nth-of-type(2) .more-less').addClass('arrow-down').removeClass('arrow-up');
+                    }
+                }
+
+            });
         } else {
-            e.preventDefault();
-            y=(y-500<0) ? 15 : y-500;
-            $('.filter-expanded .col:nth-of-type(2) label').not(':lt('+y+')').addClass('hide').removeClass('show');
-            if(y <= 15){
-                $('.filter-expanded .col:nth-of-type(2) .more-less').text('Show More');
-                $('.filter-expanded .col:nth-of-type(2) .more-less').addClass('arrow-down').removeClass('arrow-up');
-            }
-        }
+            size_li2 = $(".filter-expanded .col:nth-of-type(2) label").size();
+            y=15;
+            $('.filter-expanded .col:nth-of-type(2) label:lt('+y+')').addClass('show');
+            $('.filter-expanded .col:nth-of-type(2) .more-less').click(function (e) {
 
+                if ($('.filter-expanded .col:nth-of-type(2) .more-less').hasClass('arrow-down')) {
+                    e.preventDefault();
+                    y= (y+15 <= size_li2) ? y+15 : size_li2;
+                    $('.filter-expanded .col:nth-of-type(2) label:lt('+y+')').addClass('show').removeClass('hide');
+                    if(y == size_li2){
+                        $('.filter-expanded .col:nth-of-type(2) .more-less').text('Show Less');
+                        $('.filter-expanded .col:nth-of-type(2) .more-less').addClass('arrow-up').removeClass('arrow-down');
+                    }
+                } else {
+                    e.preventDefault();
+                    y=(y-500<0) ? 15 : y-500;
+                    $('.filter-expanded .col:nth-of-type(2) label').not(':lt('+y+')').addClass('hide').removeClass('show');
+                    if(y <= 15){
+                        $('.filter-expanded .col:nth-of-type(2) .more-less').text('Show More');
+                        $('.filter-expanded .col:nth-of-type(2) .more-less').addClass('arrow-down').removeClass('arrow-up');
+                    }
+                }
+
+            });
+        }
+    }
+    keyTopicsFilter($(window).width());
+    $(window).on('resize', function() {
+        keyTopicsFilter($(this).width());
+    });
+
+    // show more/less filters (2nd column)
+    function keyTopicsFilter2(width) {
+
+    }
+    keyTopicsFilter2($(window).width());
+    $(window).on('resize', function() {
+        keyTopicsFilter2($(this).width());
     });
 
     // show more/less filters (3rd column)
@@ -286,6 +374,16 @@ $(document).ready(function(){
         }
 
     });
+
+    // if filters are selected in the expanded menu on mobile, add the checked filter icon, else show the icon without the check
+    $('.filter-expanded .col input[type="checkbox"]').click(function(){
+        if ($('.filter-expanded .col input[type="checkbox"]').is(':checked')) {
+            $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter-check.svg" alt="Filter check icon" />');
+        } else {
+            $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter.svg" alt="Filter icon" />');
+        }
+    });
+
 
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END FILTERING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 

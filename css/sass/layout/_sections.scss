@@ -308,6 +308,17 @@
         margin-right: 0%;
     }
 }
+@media screen and (max-width: 600px) {
+    .bottom-page-btn {
+        a {
+            width: 100%;
+            margin: 0px;
+        }
+        .message {
+            margin-top: 0px;
+        }
+    }
+}
 @media screen and (max-width: 450px) {
     .what-neighbors-do {
         padding: 30px;

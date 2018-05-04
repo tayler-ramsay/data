@@ -55,10 +55,6 @@ a {
     display: flex;
     flex-wrap: wrap;
 }
-::selection {
-    background: $blue;
-    color: $white;
-}
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 700px) {

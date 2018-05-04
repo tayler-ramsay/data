@@ -7,10 +7,11 @@
     background-repeat: no-repeat;
     background-position: top center;
     margin: 270px auto 0px;
-    padding: 80px 200px 140px;
+    padding: 0px 200px;
     position: relative;
 
     .intro {
+        width: 80%;
         max-width: 550px;
         position: absolute;
         bottom: 200px;
@@ -62,31 +63,43 @@
 }
 
 /* MEDIA QUERIES */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1000px) {
     .hero {
-        padding: 80px 0px 140px;
+        margin: 220px auto 0px;
+        padding: 0px 100px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .hero {
+        margin: 180px auto 0px;
+        border-radius: 10px;
+        height: 550px;
+        padding: 0px 50px;
+        background-size: cover;
 
-        .subheading {
-            margin-top: 80px;
-        }
-        h1 {
-            font-size: 40px;
-            line-height: 50px;
-            margin-top: 40px;
+        a {
+            bottom: 150px;
         }
     }
 }
 @media screen and (max-width: 500px) {
     .hero {
-        padding: 40px 0px 90px;
+        .intro {
+            bottom: 180px;
 
-        .subheading {
-            margin-top: 50px;
+            h1 {
+                font-size: 36px;
+                line-height: 38px;
+            }
         }
-        h1 {
-            font-size: 30px;
-            line-height: 36px;
-            margin-top: 30px;
+    }
+}
+@media screen and (max-width: 450px) {
+    .hero {
+        padding: 0px 20px;
+
+        .intro {
+            width: 88%;
         }
     }
 }
