@@ -17,6 +17,8 @@ form {
             outline: none;
             direction: ltr;
             font-family: $myriad;
+            z-index: 4;
+            position: relative;
 
             &::placeholder {
                 font-style: italic;

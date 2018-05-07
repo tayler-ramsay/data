@@ -9,12 +9,11 @@ html, body {
 }
 body {
     background-color: $light-gray;
+    background-image: url('../img/curves.png');
+    background-size: cover;
+    background-repeat: repeat-y;
 
     &.home {
-        background-image: url('../img/curves.png');
-        background-size: cover;
-        background-repeat: repeat-y;
-
         .main-content {
             max-width: none;
             margin-top: 126px;
@@ -23,7 +22,6 @@ body {
 }
 .container {
     width: 90%;
-    //max-width: 1500px;
     margin: 0px auto;
 
     &.main-content {
@@ -37,6 +35,14 @@ body {
         width: 65%;
         margin-right: 10%;
         float: left;
+
+        p {
+            line-height: 30px;
+            margin: 35px 0px;
+        }
+        img {
+            width: 100%;
+        }
     }
     .sidebar {
         width: 25%;
@@ -50,10 +56,6 @@ a {
     &:hover {
         color: $dark-gray;
     }
-}
-.flex-row {
-    display: flex;
-    flex-wrap: wrap;
 }
 
 /* MEDIA QUERIES */

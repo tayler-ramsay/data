@@ -1,151 +1,9 @@
 /* SECTIONS */
-.what-neighbors-do {
-    width: 73.9%;
-    margin-right: 2%;
-    float: left;
-    background-image: url('../img/what-neighbors-do.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 80px 80px 60px;
-    margin-top: 30px;
-
-    p {
-        color: $white;
-        width: 100%;
-        max-width: 550px;
-        margin-top: 40px;
-        line-height: 27px;
-        font-size: 19px;
-
-        a {
-            color: $white;
-            font-weight: 600;
-            text-decoration: none;
-
-            &:before {
-                content: url('../img/white-arrow.png');
-                margin-right: 15px;
-                position: relative;
-                top: 0px;
-                display: inline-block;
-                vertical-align: middle;
-                -webkit-transform: perspective(1px) translateZ(0);
-                transform: perspective(1px) translateZ(0);
-                box-shadow: 0 0 1px transparent;
-            }
-            &:hover {
-                color: $turquoise;
-
-                &:before {
-                    -webkit-animation-name: hang-sink-down, hang-down;
-                    animation-name: hang-sink-down, hang-down;
-                    -webkit-animation-duration: .3s, 1.5s;
-                    animation-duration: .3s, 1.5s;
-                    -webkit-animation-delay: 0s, .3s;
-                    animation-delay: 0s, .3s;
-                    -webkit-animation-timing-function: ease-out, ease-in-out;
-                    animation-timing-function: ease-out, ease-in-out;
-                    -webkit-animation-iteration-count: 1, infinite;
-                    animation-iteration-count: 1, infinite;
-                    -webkit-animation-fill-mode: forwards;
-                    animation-fill-mode: forwards;
-                    -webkit-animation-direction: normal, alternate;
-                    animation-direction: normal, alternate;
-                }
-            }
-        }
-    }
-}
-.community-report {
-    margin-top: 30px;
-    background-color: $white;
-    width: 24%;
-    float: left;
-
-    .col-img {
-        position: relative;
-
-        img {
-            width: 100%;
-        }
-        .pdf-tag {
-            width: 100%;
-            max-width: 100px;
-            position: absolute;
-            top: 0px;
-            right: 0px;
-        }
-    }
-    .col-content {
-        padding: 50px;
-        margin-top: -4px;
-    }
-}
-.community-report {
-    margin-right: 0%;
-}
-.community-health {
-    width: 100%;
-    margin-top: 30px;
-    background-color: $white;
-    position: relative;
-    padding: 40px;
-
-    .col-img {
-        width: calc(33% - 40px);
-        float: left;
-        margin-right: 40px;
-
-        img {
-            width: 100%;
-        }
-    }
-    a {
-        color: $turquoise;
-        text-decoration: none;
-        font-weight: 600;
-        position: relative;
-        left: 0px;
-
-        &:after {
-            content: url('../img/turquoise-arrow.png');
-            margin-right: 10px;
-            position: relative;
-            top: 0px;
-            left: 10px;
-            display: inline-block;
-            vertical-align: middle;
-            -webkit-transform: perspective(1px) translateZ(0);
-            transform: perspective(1px) translateZ(0);
-            box-shadow: 0 0 1px transparent;
-        }
-        &:hover {
-            left: 3px;
-
-            &:after {
-                -webkit-animation-name: hang-sink-right, hang-right;
-                animation-name: hang-sink-right, hang-right;
-                -webkit-animation-duration: .3s, 1.5s;
-                animation-duration: .3s, 1.5s;
-                -webkit-animation-delay: 0s, .3s;
-                animation-delay: 0s, .3s;
-                -webkit-animation-timing-function: ease-out, ease-in-out;
-                animation-timing-function: ease-out, ease-in-out;
-                -webkit-animation-iteration-count: 1, infinite;
-                animation-iteration-count: 1, infinite;
-                -webkit-animation-fill-mode: forwards;
-                animation-fill-mode: forwards;
-                -webkit-animation-direction: normal, alternate;
-                animation-direction: normal, alternate;
-            }
-        }
-    }
-}
 .main-content {
     .content {
         .smaller-text {
-            font-size: 16px;
-            margin-top: 0px;
+            font-size: 13px;
+            margin: 25px 0px;
 
             .semibold {
                 font-weight: 600;
@@ -164,148 +22,158 @@
     }
 }
 .sidebar {
-    .share {
-        font-weight: bold;
-        font-size: 20px;
-        margin-top: 42px;
-    }
     .heading {
         font-weight: bold;
-        font-size: 18px;
-        margin-top: 0px;
+        font-size: 16px;
+        margin: 0px 0px 40px;
         line-height: 22px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
     }
     .social {
-        margin-left: -50px;
+        margin-left: -40px;
+        margin-bottom: 80px;
+        display: flex;
+        justify-content: space-between;
+        max-width: 280px;
 
         li {
             list-style-type: none;
             display: inline-block;
-            margin-right: 10px;
 
             &:last-of-type {
                 margin-right: 0px;
             }
             a {
-                color: $gold;
+                color: $dark-gray;
                 font-size: 30px;
-                padding: 10px;
-                position: relative;
-                top: 0px;
+                display: block;
                 transition: .2s ease-in-out;
 
                 &:hover {
-                    color: $blue;
-                    top: -5px;
+                    transform: scale(1.3);
+                }
+            }
+        }
+    }
+    .content-block {
+        border-top: 1px solid #c9c9c8;
+        padding-top: 12px;
+        margin-bottom: 60px;
+
+        .content-heading {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #b8b8b7;
+            margin-top: 0px;
+            margin-bottom: 30px;
+            position: relative;
+            cursor: pointer;
+
+            &:after {
+                content: '';
+                width: 9px;
+                height: 6px;
+                background-image: url('../img/gray-dropdown.png');
+                background-size: cover;
+                background-repeat: no-repeat;
+                position: absolute;
+                right: 0px;
+                top: 7px;
+                display: block;
+                transition: .25s ease-in-out;
+            }
+            &.arrow-up {
+                &:after {
+                    transform: rotate(-180deg);
+                }
+            }
+        }
+        ul {
+            margin-left: -40px;
+
+            &.open {
+                max-height: 999999px;
+                visibility: visible;
+                opacity: 1;
+                transition: visibility .5s, max-height .5s, opacity .5s linear;
+            }
+            &.closed {
+                max-height: 0px;
+                visibility: hidden;
+                opacity: 0;
+                margin-bottom: -60px;
+                transition: visibility .2s, max-height .2s, opacity .2s linear;
+            }
+            li {
+                list-style-type: none;
+                margin-bottom: 20px;
+
+                a {
+                    color: $dark-gray;
+                    text-decoration: none;
+                    font-size: 16px;
+                    transition: .2s ease-in-out;
+
+                    &:hover {
+                        color: $turquoise;
+                    }
                 }
             }
         }
     }
 }
-.story-image {
-    margin-top: 50px;
+.tags {
+    ul {
+        margin-left: -40px;
 
-    img {
-        width: 100%;
-    }
-}
-.needs-assessments {
-    h2 {
-        color: $dark-gray;
-        font-size: 22px;
-        font-weight: bold;
-        line-height: 28px;
-    }
-    .sidebar {
-        ul {
-            li {
-                line-height: 34px;
+        li {
+            list-style-type: none;
+            display: inline-block;
+            margin-right: 20px;
+
+            &:last-of-type {
+                margin-right: 0px;
+            }
+            .black-btn {
+                padding: 5px 25px;
             }
         }
-        .subheading {
-            font-weight: 600;
-            margin-top: 40px;
-            line-height: 22px;
-        }
+    }
+    + .btn {
+        width: auto;
+        padding: 1em 50px;
+        margin-top: 15px;
+        font-weight: bold;
     }
 }
 
 /* MEDIA QUERIES */
-@media screen and (max-width: 1200px) {
-    .what-neighbors-do {
-        width: 100%;
-        margin-right: 0%;
-    }
-    .community-report, .community-health {
-        width: 100%;
-        padding: 40px;
-
-        .col-img {
-            width: calc(50% - 40px);
-            float: left;
-            margin-right: 40px;
-
-            img {
-                width: 100%;
-            }
-        }
-        .col-content {
-            padding: 0px;
-            float: left;
-            width: 50%;
-        }
-    }
-}
-@media screen and (max-width: 700px) {
-    .what-neighbors-do {
-        background-position: 10%;
-        padding: 50px;
-    }
+@media screen and (max-width: 800px) {
     .main-content {
         .content {
             width: 100%;
             margin-right: 0%;
-        }
-    }
-    .sidebar {
-        width: 90%;
-        margin: 0px auto;
 
-        .share {
-            margin-top: 30px;
-        }
-    }
-    .story-image {
-        margin-top: 30px;
-    }
-    .needs-assessments {
-        .sidebar {
-            width: 100%;
-
-            .heading {
-                margin-top: 20px;
+            .smaller-text {
+                font-size: 16px;
+                margin: 5px 0px -5px;
             }
         }
     }
-    .community-report, .community-health {
-        padding: 0px;
-
-        .col-img {
-            width: 100%;
-            float: none;
-            margin-right: 0px;
-        }
-        .col-content {
-            padding: 40px;
-            float: none;
-            width: 100%;
-        }
+    .sidebar {
+        display: none;
     }
-}
-@media screen and (max-width: 650px) {
-    .community-report, .community-health {
-        width: 100%;
-        margin-right: 0%;
+    .tags {
+        ul {
+            li {
+                .black-btn {
+                    margin: 5px auto 10px;
+                }
+            }
+        }
     }
 }
 @media screen and (max-width: 600px) {
@@ -316,27 +184,6 @@
         }
         .message {
             margin-top: 0px;
-        }
-    }
-}
-@media screen and (max-width: 450px) {
-    .what-neighbors-do {
-        padding: 30px;
-    }
-    .community-report, .community-health {
-        .col-content {
-            padding: 30px;
-        }
-    }
-}
-@media screen and (max-width: 450px) {
-    .what-neighbors-do {
-        p {
-            a {
-                &:before {
-                    display: none;
-                }
-            }
         }
     }
 }

@@ -1,13 +1,13 @@
 /* HERO */
 .hero {
     width: 100%;
-    max-width: 1717px;
-    height: 650px;
+    max-width: 1425px;
+    height: 690px;
     background-image: url('../img/homepage-hero.png');
     background-repeat: no-repeat;
     background-position: top center;
-    margin: 270px auto 0px;
-    padding: 0px 200px;
+    margin: 350px auto 0px;
+    padding: 0px 4%;
     position: relative;
 
     .intro {
@@ -24,6 +24,8 @@
             width: 100%;
             margin-top: 70px;
             line-height: 60px;
+            position: relative;
+            bottom: auto;
 
             sup {
                 font-size: 12px;
@@ -33,7 +35,32 @@
         }
         p {
             color: $white;
+            position: relative;
         }
+    }
+    .content-title {
+        position: absolute;
+        bottom: 80px;
+
+        .date {
+            color: $white;
+            font-size: 16px;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        h1 {
+            width: 90%;
+            max-width: 800px;
+        }
+    }
+    .content-type {
+        color: $white;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: absolute;
+        top: 70px;
     }
     a {
         position: absolute;
@@ -61,24 +88,52 @@
         }
     }
 }
+.home {
+    .hero {
+        max-width: 1717px;
+        padding: 0px 200px;
+        margin: 270px auto 0px;
+        height: 650px;
+    }
+}
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 1000px) {
-    .hero {
-        margin: 220px auto 0px;
-        padding: 0px 100px;
+    .home {
+        .hero {
+            margin: 220px auto 0px;
+            padding: 0px 100px;
+        }
     }
 }
 @media screen and (max-width: 800px) {
     .hero {
-        margin: 180px auto 0px;
-        border-radius: 10px;
+        margin: 180px auto 0px !important;
         height: 550px;
-        padding: 0px 50px;
-        background-size: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 0px 2%;
 
-        a {
-            bottom: 150px;
+        .content-type {
+            top: 20px;
+        }
+        .content-title {
+            bottom: 40px;
+
+            .date {
+                font-size: 18px;
+            }
+        }
+    }
+    .home {
+        .hero {
+            border-radius: 10px;
+            padding: 0px 50px;
+            background-size: cover;
+
+            a {
+                bottom: 150px;
+            }
         }
     }
 }
@@ -88,18 +143,19 @@
             bottom: 180px;
 
             h1 {
-                font-size: 36px;
                 line-height: 38px;
             }
         }
     }
 }
 @media screen and (max-width: 450px) {
-    .hero {
-        padding: 0px 20px;
+    .home {
+        .hero {
+            padding: 0px 20px;
 
-        .intro {
-            width: 88%;
+            .intro {
+                width: 88%;
+            }
         }
     }
 }

@@ -1,6 +1,8 @@
 /* CALLOUTS */
 .stories {
     margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
 
     .story-module {
         display: flex;
@@ -191,8 +193,135 @@
         }
     }
 }
+.other-stories {
+    max-width: 1425px;
+    width: 90%;
+    margin: 120px auto 50px;
+    border-top: 1px solid #c9c9c8;
+
+    .heading {
+        h2 {
+            color: $dark-gray;
+            background-color: #f1f0ef;
+            padding-right: 20px;
+            position: relative;
+            top: -15px;
+            display: inline-block;
+            margin-bottom: 60px;
+        }
+    }
+    .story-modules {
+        display: flex;
+        flex-wrap: wrap;
+
+        .story {
+            background-color: $white;
+            transition: .2s ease-in-out;
+            box-shadow: 0px 0px 50px rgba(50, 50, 50, .2);
+            width: 30%;
+            margin-right: 5%;
+
+            &:last-of-type {
+                margin-right: 0%;
+            }
+            .story-img {
+                text-decoration: none;
+                position: relative;
+                display: block;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    transition: .1s linear;
+                }
+                .story-tag {
+                    position: absolute;
+                    top: 30px;
+                    left: 50px;
+                    color: $white;
+                    font-size: 16px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                }
+            }
+            .story-content {
+                padding: 10px 50px 40px;
+
+                .heading {
+                    font-size: 24px;
+                    font-weight: bold;
+                    line-height: 32px;
+                    color: #323232;
+                    margin-top: 20px;
+                }
+                .action-link {
+                    color: $turquoise;
+                    position: relative;
+                    left: 0px;
+                    font-size: 16px;
+                    margin-top: 10px;
+                    display: inline-block;
+
+                    &:after {
+                        content: url('../img/turquoise-arrow.png');
+                        margin-right: 20px;
+                        position: relative;
+                        top: 0px;
+                        left: 20px;
+                        display: inline-block;
+                        vertical-align: middle;
+                        -webkit-transform: perspective(1px) translateZ(0);
+                        transform: perspective(1px) translateZ(0);
+                        box-shadow: 0 0 1px transparent;
+                    }
+                    &:hover {
+                        left: 3px;
+
+                        &:after {
+                            -webkit-animation-name: hang-sink-right, hang-right;
+                            animation-name: hang-sink-right, hang-right;
+                            -webkit-animation-duration: .3s, 1.5s;
+                            animation-duration: .3s, 1.5s;
+                            -webkit-animation-delay: 0s, .3s;
+                            animation-delay: 0s, .3s;
+                            -webkit-animation-timing-function: ease-out, ease-in-out;
+                            animation-timing-function: ease-out, ease-in-out;
+                            -webkit-animation-iteration-count: 1, infinite;
+                            animation-iteration-count: 1, infinite;
+                            -webkit-animation-fill-mode: forwards;
+                            animation-fill-mode: forwards;
+                            -webkit-animation-direction: normal, alternate;
+                            animation-direction: normal, alternate;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 /* MEDIA QUERIES */
+@media screen and (max-width: 1200px) {
+    .other-stories {
+        .story-modules {
+            .story {
+                margin-right: 3%;
+                width: 31%;
+
+                .story-img {
+                    .story-tag {
+                        top: 10px;
+                        left: 30px;
+                    }
+                }
+                .story-content {
+                    padding: 0px 30px 25px;
+                }
+            }
+        }
+    }
+}
 @media screen and (max-width: 1100px) {
     .stories {
         display: block;
@@ -235,6 +364,26 @@
                 .story-img {
                     border-bottom-left-radius: 10px;
                     border-bottom-right-radius: 10px;
+                }
+            }
+        }
+    }
+    .other-stories {
+        margin: 60px auto 50px;
+
+        .heading {
+            h2 {
+                margin-bottom: 20px;
+            }
+        }
+        .story-modules {
+            .story {
+                width: 100%;
+                margin-right: 0%;
+                margin-bottom: 30px;
+
+                &:last-of-type {
+                    margin-bottom: 0px;
                 }
             }
         }

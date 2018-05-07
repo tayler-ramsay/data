@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
-    // back to top smooth scrolling (KENDRA NOTE: WILL NEED TO BE UPDATED)
+    // back to top smooth scrolling
     function scrollTop(width) {
-        if (width <= 753) {
+        if (width <= 785) {
             $('a[href^="#"]').on('click', function(e) {
                 e.preventDefault();
 
@@ -10,7 +10,7 @@ $(document).ready(function(){
                 var $target = $(target);
 
                 $('html, body').stop().animate({
-                    'scrollTop': -30 + $target.offset().top
+                    'scrollTop': -90 + $target.offset().top
                 }, 900, 'swing', function() {});
             });
         } else {
@@ -21,7 +21,7 @@ $(document).ready(function(){
                 var $target = $(target);
 
                 $('html, body').stop().animate({
-                    'scrollTop': -270 + $target.offset().top
+                    'scrollTop': -140 + $target.offset().top
                 }, 900, 'swing', function() {});
             });
         }
@@ -31,56 +31,45 @@ $(document).ready(function(){
         scrollTop($(this).width());
     });
 
-    // hide the mobile header (KENDRA NOTE: REVIEW IF NEEDED)
-    /*function hideMobileHeader(width){
-        if ( width <= 753) {
-            // Hide Header on on scroll down
-            var didScroll;
-            var lastScrollTop = 0;
-            var delta = 5;
-            var navbarHeight = $('header').outerHeight();
+    // hide the top part of the header on scroll, show when scrolled back up
+    function hideMobileHeader(width){
+        var didScroll;
+        var lastScrollTop = 0;
+        var delta = 5;
+        var navbarHeight = $('header').outerHeight();
 
-            $(window).scroll(function(event){
-                didScroll = true;
-            });
+        $(window).scroll(function(event){
+            didScroll = true;
+        });
 
-            setInterval(function() {
-                if (didScroll) {
-                    hasScrolled();
-                    didScroll = false;
-                }
-            }, 250);
-
-            function hasScrolled() {
-                var st = $(this).scrollTop();
-
-                // Make sure they scroll more than delta
-                if(Math.abs(lastScrollTop - st) <= delta)
-                    return;
-
-                // If they scrolled down and are past the navbar, add class .nav-up.
-                // This is necessary so you never see what is "behind" the navbar.
-                if (st > lastScrollTop && st > navbarHeight){
-                    // Scroll Down
-                    $('header').removeClass('nav-down').addClass('nav-up');
-                } else {
-                    // Scroll Up
-                    if(st + $(window).height() < $(document).height()) {
-                        $('header').removeClass('nav-up').addClass('nav-down');
-                    }
-                }
-
-                lastScrollTop = st;
+        setInterval(function() {
+            if (didScroll) {
+                hasScrolled();
+                didScroll = false;
             }
-        }
-        else {
+        }, 250);
 
+        function hasScrolled() {
+            var st = $(this).scrollTop();
+
+            if(Math.abs(lastScrollTop - st) <= delta)
+                return;
+
+            if (st > lastScrollTop && st > navbarHeight){
+                $('header').removeClass('nav-down').addClass('nav-up');
+            } else {
+                if(st + $(window).height() < $(document).height()) {
+                    $('header').removeClass('nav-up').addClass('nav-down');
+                }
+            }
+
+            lastScrollTop = st;
         }
     }
     hideMobileHeader( $(window).width() );
         $(window).on('resize', function(){
             hideMobileHeader( $(this).width() );
-    });*/
+    });
 
     // toggle the search bar
     $('.header-right nav ul li:last-of-type a').on('click', function(e) {
@@ -104,9 +93,9 @@ $(document).ready(function(){
     // keep the search bar in the mobile header
     function mobileSearch(width) {
         if (width <= 785) {
-            $('.mobile-menu nav ul li:nth-of-type(3)').insertBefore('.hamburger .hamburger-icon');
+            $('.mobile-menu nav ul li.search-link').insertBefore('.hamburger .hamburger-icon');
         } else {
-            $('.hamburger ul li:not(.hamburger-icon)').appendTo('.header-right nav > ul');
+            $('.hamburger ul li.search-link').appendTo('.header-right nav > ul');
         }
     }
     mobileSearch($(window).width());
@@ -139,13 +128,18 @@ $(document).ready(function(){
         $('.mobile-menu').removeClass('show');
     })
 
+    // toggle the second level nav
+    $('.mobile-menu nav ul li img').on('click', function(e) {
+        $('.mobile-menu nav ul li > ul').slideToggle();
+    });
+
     // remove the text in the Community Benefit Report button
     function removeCbrBtnTxt(width) {
         if ((width <= 1165) && (width >= 785)) {
-            $('.filter-bar .container .gold').html('<img src="img/download.png" alt="Download" />');
+            $('.filter-bar .container .gold').html('<img src="img/download.png" alt="" />');
         } else {
-            $('.filter-bar .container .gold').html('<img src="img/download.png" alt="Download" />2017 Community Benefit Report');
-            $('.mobile-menu .container .gold').html('<img src="img/download.png" alt="Download" />2017 Community Benefit Report');
+            $('.filter-bar .container .gold').html('<img src="img/download.png" alt="" />2017 Community Benefit Report');
+            $('.mobile-menu .container .gold').html('<img src="img/download.png" alt="" />2017 Community Benefit Report');
         }
     }
     removeCbrBtnTxt($(window).width());
@@ -176,6 +170,16 @@ $(document).ready(function(){
             $('.filter-expanded .col:first-of-type p:last-of-type').css('display', 'none');
         }
     });
+
+    if ($('.filter-bar form li:first-of-type input').is(':checked')) {
+        $('.filter-expanded .col:first-of-type .checkboxes').css('display', 'none');
+        $('.filter-expanded .col:first-of-type .more-less').css('display', 'none');
+        $('.filter-expanded .col:first-of-type p:last-of-type').css('display', 'block');
+    } else {
+        $('.filter-expanded .col:first-of-type .checkboxes').css('display', 'block');
+        $('.filter-expanded .col:first-of-type .more-less').css('display', 'block');
+        $('.filter-expanded .col:first-of-type p:last-of-type').css('display', 'none');
+    }
 
     // if 'All' is clicked, show the message and hide the filters
     $('.filter-bar form li:first-of-type input').click(function(){
@@ -208,12 +212,12 @@ $(document).ready(function(){
     function changeFilterIcon(width) {
         if (width <= 705) {
             if ($('.filter-expanded .col input[type="checkbox"]').is(':checked')) {
-                $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter-check.svg" alt="Filter check icon" />');
+                $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter-check.svg" alt="" />');
             } else {
-                $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter.svg" alt="Filter icon" />');
+                $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter.svg" alt="" />');
             }
         } else {
-            $('.filter-bar form ul li:last-of-type a').html('Filter <img src="img/white-arrow-down.png" alt="White arrow" />');
+            $('.filter-bar form ul li:last-of-type a').html('Filter <img src="img/white-arrow-down.png" alt="" />');
         }
     }
     changeFilterIcon($(window).width());
@@ -225,9 +229,9 @@ $(document).ready(function(){
     function changeFilterIcon2(width) {
         if (width >= 705) {
             if ($('.filter-expanded .col input[type="checkbox"]').is(':checked')) {
-                $('.filter-bar form ul li:last-of-type a').html('Filter <img src="img/white-arrow-down.png" alt="White arrow" />');
+                $('.filter-bar form ul li:last-of-type a').html('Filter <img src="img/white-arrow-down.png" alt="" />');
             } else {
-                $('.filter-bar form ul li:last-of-type a').html('Filter <img src="img/white-arrow-down.png" alt="White arrow" />');
+                $('.filter-bar form ul li:last-of-type a').html('Filter <img src="img/white-arrow-down.png" alt="" />');
             }
         }
     }
@@ -244,10 +248,10 @@ $(document).ready(function(){
     function clearFilterIcon(width) {
         if (width <= 705) {
             $('.filter-expanded input[type="reset"]').on('click', function(e) {
-                $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter.svg" alt="Filter icon" />');
+                $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter.svg" alt="" />');
             });
         } else {
-            $('.filter-bar form ul li:last-of-type a').html('Filter <img src="img/white-arrow-down.png" alt="White arrow" />');
+            $('.filter-bar form ul li:last-of-type a').html('Filter <img src="img/white-arrow-down.png" alt="" />');
         }
     }
     clearFilterIcon($(window).width());
@@ -283,10 +287,11 @@ $(document).ready(function(){
 
     // show more/less filters (2nd column)
     function keyTopicsFilter(width) {
-        if (width <= 705) {
+        if (width <= 785) {
             size_li2 = $(".filter-expanded .col:nth-of-type(2) label").size();
             y=5;
             $('.filter-expanded .col:nth-of-type(2) label:lt('+y+')').addClass('show');
+            $('.filter-expanded .col:nth-of-type(2) label').slice(5).addClass('hide').removeClass('show');
             $('.filter-expanded .col:nth-of-type(2) .more-less').click(function (e) {
 
                 if ($('.filter-expanded .col:nth-of-type(2) .more-less').hasClass('arrow-down')) {
@@ -378,10 +383,47 @@ $(document).ready(function(){
     // if filters are selected in the expanded menu on mobile, add the checked filter icon, else show the icon without the check
     $('.filter-expanded .col input[type="checkbox"]').click(function(){
         if ($('.filter-expanded .col input[type="checkbox"]').is(':checked')) {
-            $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter-check.svg" alt="Filter check icon" />');
+            $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter-check.svg" alt="" />');
         } else {
-            $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter.svg" alt="Filter icon" />');
+            $('.filter-bar form ul li:last-of-type a').html('<img src="img/filter.svg" alt="" />');
         }
+    });
+
+    // if more than two lines are needed for the condensed filter, show the more filters tag
+    var filtersCheckedCol1 = $('.filter-condensed .col:nth-of-type(1) .checkboxes label').length;
+    var filtersCheckedCol2 = $('.filter-condensed .col:nth-of-type(2) .checkboxes label').length;
+    var filtersCheckedCol3 = $('.filter-condensed .col:nth-of-type(3) .checkboxes label').length;
+
+    if (filtersCheckedCol1 > 2 || filtersCheckedCol2 > 6 || filtersCheckedCol3 > 2) {
+        $('.filter-condensed .more-filters-tag').show();
+    } else {
+        $('.filter-condensed .more-filters-tag').hide();
+    }
+
+    // if there are no filters selected in a category, show a message
+    if(!$.trim($('.filter-condensed .col:nth-of-type(1) .checkboxes').html()).length) {
+        $('.filter-condensed .col:nth-of-type(1) .checkboxes').html('<p>No filters selected</p>');
+    }
+    if(!$.trim($('.filter-condensed .col:nth-of-type(2) .checkboxes').html()).length) {
+        $('.filter-condensed .col:nth-of-type(2) .checkboxes').html('<p>No filters selected</p>');
+    }
+    if(!$.trim($('.filter-condensed .col:nth-of-type(3) .checkboxes').html()).length) {
+        $('.filter-condensed .col:nth-of-type(3) .checkboxes').html('<p>No filters selected</p>');
+    }
+
+    // show the expanded filter when hovering over the condensed filter
+    $('.filter-condensed').hover(function(){
+        $('.filter-expanded').addClass('show').removeClass('hide');
+    },
+    function(){
+        $('.filter-expanded').hover(function(){
+            $('.filter-expanded').addClass('show').removeClass('hide');
+            $('.filter-expanded .col .checkboxes label').css('visibility','visible');
+        },
+        function(){
+            $('.filter-expanded').addClass('hide').removeClass('show');
+            $('.filter-expanded .col .checkboxes label').css('visibility','hidden');
+        });
     });
 
 
@@ -391,10 +433,22 @@ $(document).ready(function(){
     // scale and follow mouse effect for homepage stories
     $('.stories .story .story-img > img')
     .on('mouseover', function(){
-      $(this).css({'transform': 'scale(1.1)'});
+        $(this).css({'transform': 'scale(1.1)'});
     })
     .on('mouseout', function(){
-      $(this).css({'transform': 'scale(1)'});
+        $(this).css({'transform': 'scale(1)'});
+    })
+    .on('mousemove', function(e) {
+        $(this).css({'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 100 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +'%'});
+    });
+
+    // scale and follow mouse effect for other stories
+    $('.other-stories .story-modules .story .story-img > img')
+    .on('mouseover', function(){
+        $(this).css({'transform': 'scale(1.1)'});
+    })
+    .on('mouseout', function(){
+        $(this).css({'transform': 'scale(1)'});
     })
     .on('mousemove', function(e) {
         $(this).css({'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 100 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +'%'});
@@ -414,7 +468,13 @@ $(document).ready(function(){
         }
     });
 
-    // social sharing (KENDRA NOTE: REVIEW IF NEEDED)
+    // social sharing
+    $('.share-gp').click(function(e) {
+        e.preventDefault();
+        var contentPath = window.location;
+        shareURL = 'https://plus.google.com/share?url='+contentPath;
+        window.open(shareURL, '_blank', 'height=350,width=550');
+    });
     $('.share-fb').click(function(e) {
         e.preventDefault();
         var contentPath = window.location;
@@ -432,6 +492,17 @@ $(document).ready(function(){
         var contentPath = window.location;
         shareURL = 'https://www.linkedin.com/shareArticle?mini=true&url='+contentPath;
         window.open(shareURL, '_blank', 'height=350,width=550');
+    });
+
+    // open or close the related content blocks in the sidebar
+    $(".sidebar .content-block .content-heading").on('click', function(e) {
+        if ($(this).parent().children(".content-list").hasClass("open")) {
+            $(this).parent().children(".content-list").addClass('closed').removeClass('open');
+            $(this).addClass('arrow-down').removeClass('arrow-up');
+        } else {
+            $(this).parent().children(".content-list").addClass('open').removeClass('closed');
+            $(this).addClass('arrow-up').removeClass('arrow-down');
+        }
     });
 
 });

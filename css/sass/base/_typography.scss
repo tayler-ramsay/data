@@ -7,18 +7,19 @@ body {
     font-size: $body-font-size;
 }
 h1 {
-    font-size: 60px;
-    color: $gold;
+    font-size: 48px;
+    color: $white;
     margin: 0px;
 }
 h2 {
-    color: $turquoise;
+    color: $gold;
     margin-top: 0px;
-    font-size: 36px;
-    line-height: 44px;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 35px;
 }
 h3 {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 30px;
     color: $dark-gray;
     margin-top: 0px;
@@ -27,15 +28,11 @@ p, ul li, ol li {
     color: $dark-gray;
     line-height: 26px;
 }
-sup {
-    /*font-size: 30px;
-    top: -20px;*/
-}
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 500px) {
     h1 {
-        font-size: 42px;
+        font-size: 38px !important;
     }
     h2 {
         font-size: 30px;
