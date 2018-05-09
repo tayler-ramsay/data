@@ -505,4 +505,31 @@ $(document).ready(function(){
         }
     });
 
+    // when the 'Share this Story' button is clicked, hide the button and show the social icons
+    $('.tags + .btn').on('click', function(e) {
+        e.preventDefault();
+        $('.tags + .btn').addClass('hide');
+        $('.tags + .btn + .social').addClass('show');
+    });
+
+    // change the contact form input label color on focus
+    $(".contact-module form :input").focus(function() {
+        $("label[for='" + this.id + "']").addClass("label-focus");
+    }).blur(function() {
+        $("label").removeClass("label-focus");
+    });
+
+    // style the select dropdowns
+    $('select').selectric();
+
+    // change the selectric label color to gray when an option is selected
+    $('select').on('change', function() {
+        $('.selectric .label').css('color','#323232');
+    });
+
+    // if the selectric label is 'Select one', change the label color to gray
+    $('select').on('change', function() {
+        $('.selectric .label:contains("Choose specific topic from list provided")').css('color','#d5d5d4');
+    });
+
 });

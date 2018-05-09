@@ -35,9 +35,150 @@ form {
                 width: 100%;
                 padding: 10px 45px 10px 20px;
                 border: 1px solid gray;
+                -webkit-appearance: none;
+                -moz-appearance: none;
 
                 &::placeholder {
                     opacity: 1;
+                }
+            }
+        }
+    }
+}
+.contact-module {
+    form {
+        div {
+            width: 100%;
+            margin-bottom: 50px;
+
+            &.half {
+                width: 45%;
+                float: left;
+
+                &:first-of-type {
+                    margin-right: 10%;
+                }
+            }
+            label {
+                display: block;
+                margin-bottom: 15px;
+                color: #d5d5d4;
+                transition: .3s ease-in-out;
+
+                &.label-focus {
+                    color: $dark-gray;
+                }
+            }
+            input, select {
+                width: 100%;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                border: none;
+                border-bottom: 2px solid #d5d5d4;
+                border-radius: 0px;
+                font-family: $myriad;
+                font-size: 30px;
+                padding: 0px 0px 10px;
+                outline: none;
+                transition: .3s ease-in-out;
+
+                &::placeholder {
+                    color: #d5d5d4;
+                    transition: .3s ease-in-out;
+                }
+                &:focus {
+                    border-bottom: 2px solid $dark-gray;
+                    color: $dark-gray;
+
+                    &::placeholder {
+                        color: $dark-gray;
+                    }
+                }
+                &[type="submit"] {
+                    background: $gold;
+                    padding: 20px;
+                    text-align: center;
+                    border-radius: 50px;
+                    cursor: pointer;
+                    color: $white;
+                    font-weight: bold;
+                    font-size: 16px;
+                    border-bottom: none;
+                    transition: .3s ease-in-out;
+
+                    &:hover, &:focus, &:active {
+                        background: lighten($gold, 3%);
+                    }
+                }
+            }
+            .selectric-wrapper {
+                margin-bottom: 0px;
+
+                div {
+                    margin-bottom: 0px;
+                }
+                .selectric {
+                    background-color: transparent;
+                    border: none;
+                    border-bottom: 2px solid #d5d5d4;
+                    padding: 0px 0px 10px 0px;
+                    transition: .3s ease-in-out;
+
+                    .label {
+                        color: #d5d5d4;
+                        font-size: 30px;
+                        font-family: $myriad;
+                        margin: 0px;
+                        padding-right: 40px;
+                        transition: .3s ease-in-out;
+                    }
+                    .button {
+                        background-color: transparent;
+
+                        &:after {
+                            border: none;
+                            background-image: url('../img/gray-arrow.png');
+                            background-repeat: no-repeat;
+                            width: 21px;
+                            height: 12px;
+                        }
+                    }
+                }
+                .selectric-items {
+                    border: 2px solid $dark-gray;
+                    margin-top: -2px;
+                    box-shadow: none;
+                    background: $white;
+                    transition: .3s ease-in-out;
+
+                    li {
+                        color: $dark-gray;
+                        font-size: 20px;
+                        font-family: $myriad;
+                        color: #d5d5d4;
+                        line-height: 26px;
+                        transition: .3s ease-in-out;
+
+                        &:hover, &.selected, &.highlighted {
+                            background-color: #f1f1f1;
+                            color: $dark-gray;
+                        }
+                    }
+                    .disabled {
+                        color: #d5d5d4 !important;
+                        opacity: 1;
+                    }
+                }
+                &.selectric-open {
+                    transition: .3s ease-in-out;
+
+                    .selectric {
+                        border-bottom: 2px solid $dark-gray;
+
+                        .label {
+                            color: $dark-gray;
+                        }
+                    }
                 }
             }
         }
@@ -58,6 +199,30 @@ form {
         &.search {
             input {
                 margin-right: 55px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 650px) {
+    .contact-module {
+        form {
+            div {
+                margin-bottom: 35px;
+
+                &.half {
+                    width: 100%;
+                    margin-right: 0% !important;
+                }
+                input {
+                    font-size: 26px;
+                }
+                .selectric-wrapper {
+                    .selectric {
+                        .label {
+                            font-size: 26px;
+                        }
+                    }
+                }
             }
         }
     }

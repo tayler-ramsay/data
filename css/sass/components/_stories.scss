@@ -7,9 +7,9 @@
     .story-module {
         display: flex;
         flex-wrap: wrap;
-        width: 49%;
+        width: 48.9%;
         margin-right: 2%;
-        margin-bottom: 2%;
+        margin-bottom: 30px;
         display: none;
         opacity: 1;
         visibility: visible;
@@ -41,7 +41,7 @@
         }
         &.half {
             width: 48%;
-            margin-bottom: 4%;
+            margin-bottom: 35px;
 
             &:first-of-type {
                 margin-right: 4%;
@@ -356,6 +356,18 @@
             .story-img {
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
+
+                img {
+                    border-top-right-radius: 10px;
+                    border-top-right-radius: 10px;
+                }
+                .corner-tag {
+                    border-top-right-radius: 10px !important;
+
+                    img {
+                        border-top-right-radius: 10px !important;
+                    }
+                }
             }
             &.video {
                 border-bottom-left-radius: 10px;
@@ -381,9 +393,14 @@
                 width: 100%;
                 margin-right: 0%;
                 margin-bottom: 30px;
+                border-radius: 10px;
 
                 &:last-of-type {
                     margin-bottom: 0px;
+                }
+                .story-img {
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
                 }
             }
         }
@@ -395,7 +412,7 @@
             margin-bottom: 0%;
 
             .story {
-                margin-bottom: 7%;
+                margin-bottom: 30px !important;
 
                 &.half {
                     width: 100%;
