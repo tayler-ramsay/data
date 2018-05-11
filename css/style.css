@@ -910,20 +910,59 @@ form.search.open input::placeholder {
 .contact-module form div input:focus::placeholder, .contact-module form div select:focus::placeholder {
   color: #323232;
 }
-.contact-module form div input[type="submit"], .contact-module form div select[type="submit"] {
+.contact-module form div button {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  position: relative;
+  overflow: hidden;
   background: #ffb937;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
   padding: 20px;
+  width: 100%;
   text-align: center;
   border-radius: 50px;
+  border: none;
   cursor: pointer;
+  background: #ffb937;
+  text-decoration: none;
   color: #ffffff;
+  font-family: "myriad-pro", sans-serif;
   font-weight: bold;
   font-size: 16px;
-  border-bottom: none;
-  transition: .3s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.contact-module form div input[type="submit"]:hover, .contact-module form div input[type="submit"]:focus, .contact-module form div input[type="submit"]:active, .contact-module form div select[type="submit"]:hover, .contact-module form div select[type="submit"]:focus, .contact-module form div select[type="submit"]:active {
+.contact-module form div button:hover, .contact-module form div button:focus, .contact-module form div button:active {
+  color: white;
+}
+.contact-module form div button:hover:before, .contact-module form div button:focus:before, .contact-module form div button:active:before {
+  -webkit-transform: scale(2);
+  transform: scale(2);
+}
+.contact-module form div button:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: #ffbe46;
+  border-radius: 100%;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
 }
 .contact-module form div .selectric-wrapper {
   margin-bottom: 0px;
@@ -936,7 +975,6 @@ form.search.open input::placeholder {
   border: none;
   border-bottom: 2px solid #d5d5d4;
   padding: 0px 0px 10px 0px;
-  transition: .3s ease-in-out;
 }
 .contact-module form div .selectric-wrapper .selectric .label {
   color: #d5d5d4;
@@ -958,6 +996,9 @@ form.search.open input::placeholder {
 }
 .contact-module form div .selectric-wrapper .selectric-items {
   border: 2px solid #323232;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
   margin-top: -2px;
   box-shadow: none;
   background: #ffffff;
@@ -979,14 +1020,15 @@ form.search.open input::placeholder {
   color: #d5d5d4 !important;
   opacity: 1;
 }
-.contact-module form div .selectric-wrapper.selectric-open {
-  transition: .3s ease-in-out;
-}
 .contact-module form div .selectric-wrapper.selectric-open .selectric {
   border-bottom: 2px solid #323232;
 }
 .contact-module form div .selectric-wrapper.selectric-open .selectric .label {
   color: #323232;
+}
+.contact-module form div .selectric-wrapper.selectric-open .selectric-items {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* MEDIA QUERIES */
@@ -1023,47 +1065,32 @@ form.search.open input::placeholder {
 /* CALLOUTS */
 .stories {
   margin-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
-}
-.stories .story-module {
-  display: flex;
-  flex-wrap: wrap;
-  width: 48.9%;
-  margin-right: 2%;
-  margin-bottom: 30px;
-  display: none;
-  opacity: 1;
-  visibility: visible;
-  transition: .3s ease-in-out;
-}
-.stories .story-module:nth-child(even) {
-  margin-right: 0%;
-}
-.stories .story-module.hide {
-  display: none;
-  animation: fade-out 1s ease-in-out;
-  -webkit-animation: fade-out 1s ease-in-out;
-}
-.stories .story-module.show {
-  display: flex !important;
-  animation: fade-in 1s ease-in-out !important;
-  -webkit-animation: fade-in 1s ease-in-out !important;
+  width: 102%;
 }
 .stories .story {
   background-color: #ffffff;
   transition: .2s ease-in-out;
   box-shadow: 0px 0px 50px rgba(50, 50, 50, 0.2);
-}
-.stories .story.full .story-content {
-  padding: 40px 12% 40px;
-}
-.stories .story.half {
   width: 48%;
   margin-bottom: 35px;
+        /*display: none;
+
+        &.hide {
+            display: none;
+            animation: fade-out 1s ease-in-out;
+            -webkit-animation: fade-out 1s ease-in-out;
+        }
+        &.show {
+            display: block !important;
+            animation: fade-in 1s ease-in-out !important;
+            -webkit-animation: fade-in 1s ease-in-out !important;
+        }*/
 }
-.stories .story.half:first-of-type {
-  margin-right: 4%;
+.stories .story.full .story-content {
+  padding: 40px 12% 60px;
+}
+.stories .story.half {
+  width: 23%;
 }
 .stories .story.half .story-content {
   padding: 10px 17% 40px;
@@ -1083,6 +1110,7 @@ form.search.open input::placeholder {
 }
 .stories .story.video .story-img img {
   height: 100%;
+  margin-bottom: -4px;
 }
 .stories .story.video .story-img:after {
   content: '';
@@ -1307,19 +1335,15 @@ form.search.open input::placeholder {
 @media screen and (max-width: 1100px) {
   .stories {
     display: block;
+    width: 104%;
   }
-  .stories .story-module {
-    width: 100%;
-    margin-bottom: 4%;
+  .stories .story {
+    width: 96%;
   }
-  .stories .story-module .story {
-    float: left;
-    width: 100%;
+  .stories .story.half {
+    width: 46%;
   }
-  .stories .story-module .story.half {
-    width: 48%;
-  }
-  .stories .story-module .story.full .story-content {
+  .stories .story.full .story-content {
     padding: 20px 12% 40px;
   }
 }
@@ -1359,59 +1383,60 @@ form.search.open input::placeholder {
   .other-stories .heading h2 {
     margin-bottom: 20px;
   }
-  .other-stories .story-modules .story {
+  .other-stories .story {
     width: 100%;
     margin-right: 0%;
     margin-bottom: 30px;
     border-radius: 10px;
   }
-  .other-stories .story-modules .story:last-of-type {
+  .other-stories .story:last-of-type {
     margin-bottom: 0px;
   }
-  .other-stories .story-modules .story .story-img {
+  .other-stories .story .story-img {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
 }
 @media screen and (max-width: 600px) {
-  .stories .story-module {
-    margin-bottom: 0%;
+  .stories {
+    width: 100%;
   }
-  .stories .story-module .story {
+  .stories .story {
     margin-bottom: 30px !important;
+    width: 100%;
   }
-  .stories .story-module .story.half {
+  .stories .story.half {
     width: 100%;
     margin-right: 0%;
   }
-  .stories .story-module .story.video .story-img {
+  .stories .story.video .story-img {
     height: auto;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
   }
-  .stories .story-module .story.video .story-img img {
+  .stories .story.video .story-img img {
     height: auto;
   }
-  .stories .story-module .story.video .story-content {
+  .stories .story.video .story-content {
     position: relative;
     bottom: auto;
   }
-  .stories .story-module .story.video .story-content .heading {
+  .stories .story.video .story-content .heading {
     color: #323232;
   }
-  .stories .story-module .story .story-img .corner-tag {
+  .stories .story .story-img .corner-tag {
     width: 90px;
   }
-  .stories .story-module .story .story-content {
+  .stories .story .story-content {
     padding: 10px 30px 30px !important;
   }
-  .stories .story-module .story .story-content .county {
+  .stories .story .story-content .county {
     margin-bottom: 10px;
   }
-  .stories .story-module .story .story-content .county + .heading {
+  .stories .story .story-content .county + .heading {
     margin-bottom: 15px;
   }
-  .stories .story-module .story .story-content .btn {
+  .stories .story .story-content .btn {
     width: 100%;
   }
 }
@@ -1737,6 +1762,10 @@ header .filter-condensed .more-filters-tag p {
   text-transform: uppercase;
   margin: 0px;
   letter-spacing: 1px;
+}
+
+.grid-sizer {
+  width: 25%;
 }
 
 /* MEDIA QUERIES */

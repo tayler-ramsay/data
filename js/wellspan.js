@@ -345,15 +345,6 @@ $(document).ready(function(){
         keyTopicsFilter($(this).width());
     });
 
-    // show more/less filters (2nd column)
-    function keyTopicsFilter2(width) {
-
-    }
-    keyTopicsFilter2($(window).width());
-    $(window).on('resize', function() {
-        keyTopicsFilter2($(this).width());
-    });
-
     // show more/less filters (3rd column)
     size_li3 = $(".filter-expanded .col:nth-of-type(3) label").size();
     z=5;
@@ -454,14 +445,15 @@ $(document).ready(function(){
         $(this).css({'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 100 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +'%'});
     });
 
-    // load more story modules
-    size_li4 = $(".stories .story-module").size();
-    m=4;
-    $('.stories .story-module:lt('+m+')').addClass('show');
+    // load more stories
+    size_li4 = $(".stories .story").size();
+    m=8;
+    $('.stories .story:lt('+m+')').addClass('show');
     $('.bottom-page-btn .load-more').click(function (e) {
         e.preventDefault();
-        m= (m+4 <= size_li4) ? m+4 : size_li4;
-        $('.stories .story-module:lt('+m+')').addClass('show').removeClass('hide');
+        m= (m+8 <= size_li4) ? m+8 : size_li4;
+        $('.stories .story:lt('+m+')').addClass('show').removeClass('hide');
+        $('.stories').isotope();
         if(m == size_li4){
             $('.bottom-page-btn .load-more').hide();
             $('.bottom-page-btn .message').show();
@@ -531,5 +523,92 @@ $(document).ready(function(){
     $('select').on('change', function() {
         $('.selectric .label:contains("Choose specific topic from list provided")').css('color','#d5d5d4');
     });
+
+    // load images before isotope and matchheight functions run
+    $('.stories').imagesLoaded( function() {
+
+        // initialize isotope
+        $('.stories').isotope({
+            itemSelector: '.story',
+            layoutMode: 'packery',
+            packery: {
+               columnWidth: '.grid-sizer'
+            }
+        });
+
+        // match the article heights
+        $('.stories .story.half').matchHeight();
+
+        // match article heights on resize
+        function matchHeightOnResize(width) {
+            $('.stories .story.half').matchHeight();
+        }
+        matchHeightOnResize($(window).width());
+        $(window).on('resize', function() {
+            matchHeightOnResize($(this).width());
+        });
+
+    });
+
+    // when a filter is selected, use the input's value to determine which class(es) to filter
+    var $container = $('.stories');
+    var $checkboxes = $('.filter-bar .filter-expanded .col .checkboxes input');
+
+    $('.filter-bar .container form ul li').on( 'click', 'input', function() {
+        var countyValue = this.value;
+        $container.isotope({ filter: countyValue });
+        secondaryFilter(countyValue);
+        secondaryFilterOnLoad(countyValue);
+        console.log(countyValue);
+    });
+
+    // use case: user selects a county before a secondary filter
+    $checkboxes.change(function () {
+        var filters = [];
+        $checkboxes.filter(':checked').each(function () {
+            filters.push(this.value);
+        });
+        var filterValue = filters.join('');
+        $container.isotope({ filter: filterValue });
+        console.log(filterValue);
+    });
+
+    // use case: user selects a secondary filter before a county (combines both types of filters for further refinement)
+    function secondaryFilterOnLoad(countyValue) {
+        $checkboxes.change(function () {
+            var filters = [];
+            $checkboxes.filter(':checked').each(function () {
+                filters.push(this.value);
+            });
+            var filterValue = filters.join('');
+            secondaryFilter(filterValue);
+            $container.isotope({ filter: filterValue + countyValue });
+            console.log(filterValue + countyValue);
+        });
+    }
+
+    // use case: user selects a county before a secondary filter (combines both types of filters for further refinement)
+    function secondaryFilter(filterValue) {
+        $('.filter-bar .container form > ul li').on( 'click', 'input', function() {
+            var countyValue = this.value;
+            var $radios = $('.filter-bar .container form > ul li input');
+            $radios.change(function () {
+                var filters = [];
+                $radios.filter(':checked').each(function () {
+                    filters.push(this.value);
+                });
+                $container.isotope({ filter: countyValue + filterValue });
+                console.log(countyValue + filterValue);
+            });
+        });
+    }
+
+    // reset filters when clear button is clicked
+    $('.filter-bar .filter-expanded form input[type="reset"]').on( 'click', function() {
+        $('.filter-bar .filter-expanded .col .checkboxes input:checkbox:checked').removeAttr('checked');
+        $container.isotope({ filter: '*' });
+        $('.filter-bar .filter-expanded .col .checkboxes:has(input:checkbox:not(:checked))').removeClass('checked');
+    });
+
 
 });
