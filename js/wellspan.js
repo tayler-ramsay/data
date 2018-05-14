@@ -243,6 +243,11 @@ $(document).ready(function(){
     // when the reset button is clicked, remove the checked attribute from filters
     $('.filter-expanded input[type="reset"]').on('click', function(e) {
         $('.filter-expanded input[type="checkbox"]').removeAttr('checked', 'checked');
+        $('.filter-bar ul li input[type="radio"]').removeAttr('checked', 'checked');
+        $('.filter-bar ul li:first-of-type input[type="radio"]').attr('checked', 'checked');
+        $('.filter-expanded .col:first-of-type .checkboxes').css('display', 'none');
+        $('.filter-expanded .col:first-of-type .more-less').css('display', 'none');
+        $('.filter-expanded .col:first-of-type p:last-of-type').css('display', 'block');
     });
 
     function clearFilterIcon(width) {
@@ -605,9 +610,9 @@ $(document).ready(function(){
 
     // reset filters when clear button is clicked
     $('.filter-bar .filter-expanded form input[type="reset"]').on( 'click', function() {
-        $('.filter-bar .filter-expanded .col .checkboxes input:checkbox:checked').removeAttr('checked');
         $container.isotope({ filter: '*' });
         $('.filter-bar .filter-expanded .col .checkboxes:has(input:checkbox:not(:checked))').removeClass('checked');
+        $('.filter-bar ul li:has(input:checkbox:not(:checked))').removeClass('checked');
     });
 
 
