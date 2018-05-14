@@ -1,0 +1,25 @@
+const articleObject = [{
+    "county": "Adams",
+    "date": "12/12/2018",
+    "countyImg": "image.svg",
+    "heroImg": "img/story1.jpg",
+    "caption": "Jamie Johnson",
+    "heading": "WellSpan, local libraries encourage kids to ‘Get Outdoors’",
+    "downloadable": false,
+    "type": ["video", "news", "features", "class", "event"],
+    "communities": ["Gettysburg", "Aspers", "East Berlin"],
+    "topics": ["Obesity", "Access to care"]
+},
+    // {
+    // "county": "York",
+    // "data-date": "MM/DD/YYY",
+    // "data-county-img": "image.svg",
+    // "data-hero-img": "hero.png",
+    // "data-hero-caption": "Jamie Johnson",
+    // "data-heading": "",
+    // "data-downloadable": false,
+    // "data-type": ["video", "news", "features", "class", "event"],
+    // "data-community": ["Gettysburg", "Aspers", "East Berlin"],
+    // "data-topics": ["Obesity", "Access to care"]
+    // },
+];
